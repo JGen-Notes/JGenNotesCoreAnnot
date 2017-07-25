@@ -1,0 +1,11 @@
+grammar eu.jgen.notes.annot.desc.Annotation with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
+
+generate annotation "http://www.jgen.eu/notes/annot/desc/Annotation"
+
+import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
+
+Model:
+	
+	{Model} "{" importSection=XImportSection?
+		annotations+=XAnnotation* 
+		"}";

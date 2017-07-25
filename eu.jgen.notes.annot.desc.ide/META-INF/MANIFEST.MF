@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: eu.jgen.notes.annot.desc.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: eu.jgen.notes.annot.desc.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: eu.jgen.notes.annot.desc,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: eu.jgen.notes.annot.desc.ide.contentassist.antlr.internal,
+ eu.jgen.notes.annot.desc.ide.contentassist.antlr
+

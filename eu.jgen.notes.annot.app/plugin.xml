@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         name="Model Annotation Editor"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="eu.jgen.notes.annot.app.views.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Annotations"
+            class="eu.jgen.notes.annot.app.views.Perspective"
+            id="eu.jgen.notes.annot.app.perspective">
+      </perspective>
+   </extension>
+      <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Annotations"
+            id="eu.jgen.notes.annot.app.category">
+      </category>
+      <command
+            categoryId="eu.jgen.notes.annot.app.category"
+            description="Shows object selected by the CA Gen Toolset"
+            id="eu.jgen.notes.annot.app.command.showone"
+            name="Single Starting Point">
+      </command>
+      <command
+            categoryId="eu.jgen.notes.annot.app.category"
+            description="Shows all as tree of objects for the selection."
+            id="eu.jgen.notes.annot.app.command.showall"
+            name="Tree of objects  ">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="eu.jgen.notes.annot.app.views.AnnotationsNavigator"
+            icon="icons/navigator.gif"
+            id="eu.jgen.notes.annot.app.annotationnavigator"
+            inject="true"
+            name="Annotation Navigator">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <view
+               closeable="false"
+               id="eu.jgen.notes.annot.app.annotationnavigator"
+               minimized="false"
+               relationship="left"
+               relative="org.eclipse.ui.editorss"
+               showTitle="true"
+               standalone="true"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         id="product"
+         name="Model Annotation Editor"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="eu.jgen.notes.annot.app.application"
+            description="Application allows to find object decsription and use to save annottaions."
+            name="Annotations Plug-in for CA Gen Toolset">
+         <property
+               name="appName"
+               value="Annotations Plug-in for CA Gen Toolset">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

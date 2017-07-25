@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: eu.jgen.notes.annot.desc
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: eu.jgen.notes.annot.desc; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.common.types,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: eu.jgen.notes.annot.desc.jvmmodel,
+ eu.jgen.notes.annot.desc,
+ eu.jgen.notes.annot.desc.scoping,
+ eu.jgen.notes.annot.desc.annotation.util,
+ eu.jgen.notes.annot.desc.services,
+ eu.jgen.notes.annot.desc.parser.antlr,
+ eu.jgen.notes.annot.desc.annotation.impl,
+ eu.jgen.notes.annot.desc.parser.antlr.internal,
+ eu.jgen.notes.annot.desc.validation,
+ eu.jgen.notes.annot.desc.annotation,
+ eu.jgen.notes.annot.desc.serializer
+Import-Package: org.apache.log4j

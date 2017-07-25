@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.jgen.eu/notes/annot/desc/Annotation"
+			class = "eu.jgen.notes.annot.desc.annotation.AnnotationPackage"
+			genModel = "model/generated/Annotation.genmodel" />
+	</extension>
+</plugin>
