@@ -18,7 +18,7 @@ import eu.jgen.notes.annot.processor.base.Processor;
 import eu.jgen.notes.annot.processor.base.ScanEnvironment;
 import eu.jgen.notes.annot.processor.base.SupportedAnnotationTypes;
 
-public abstract class AbstractProcessor implements Processor {
+public abstract class AbstractProcessor implements Processor { 
 	
 	protected ProcessingEnvironment processingEnv;
 	private boolean initialized = false;
