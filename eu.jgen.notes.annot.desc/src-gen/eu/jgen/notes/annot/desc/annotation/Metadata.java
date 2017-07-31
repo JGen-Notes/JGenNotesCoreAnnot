@@ -13,22 +13,22 @@ import org.eclipse.xtext.xtype.XImportSection;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Model</b></em>'.
+ * A representation of the model object '<em><b>Metadata</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.jgen.notes.annot.desc.annotation.Model#getImportSection <em>Import Section</em>}</li>
- *   <li>{@link eu.jgen.notes.annot.desc.annotation.Model#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link eu.jgen.notes.annot.desc.annotation.Metadata#getImportSection <em>Import Section</em>}</li>
+ *   <li>{@link eu.jgen.notes.annot.desc.annotation.Metadata#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
- * @see eu.jgen.notes.annot.desc.annotation.AnnotationPackage#getModel()
+ * @see eu.jgen.notes.annot.desc.annotation.AnnotationPackage#getMetadata()
  * @model
  * @generated
  */
-public interface Model extends EObject
+public interface Metadata extends EObject
 {
   /**
    * Returns the value of the '<em><b>Import Section</b></em>' containment reference.
@@ -40,14 +40,14 @@ public interface Model extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Import Section</em>' containment reference.
    * @see #setImportSection(XImportSection)
-   * @see eu.jgen.notes.annot.desc.annotation.AnnotationPackage#getModel_ImportSection()
+   * @see eu.jgen.notes.annot.desc.annotation.AnnotationPackage#getMetadata_ImportSection()
    * @model containment="true"
    * @generated
    */
   XImportSection getImportSection();
 
   /**
-   * Sets the value of the '{@link eu.jgen.notes.annot.desc.annotation.Model#getImportSection <em>Import Section</em>}' containment reference.
+   * Sets the value of the '{@link eu.jgen.notes.annot.desc.annotation.Metadata#getImportSection <em>Import Section</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Import Section</em>' containment reference.
@@ -66,10 +66,10 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Annotations</em>' containment reference list.
-   * @see eu.jgen.notes.annot.desc.annotation.AnnotationPackage#getModel_Annotations()
+   * @see eu.jgen.notes.annot.desc.annotation.AnnotationPackage#getMetadata_Annotations()
    * @model containment="true"
    * @generated
    */
   EList<XAnnotation> getAnnotations();
 
-} // Model
+} // Metadata

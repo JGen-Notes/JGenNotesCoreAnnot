@@ -24,50 +24,54 @@ import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
 @Singleton
 public class AnnotationGrammarAccess extends AbstractGrammarElementFinder {
 	
-	public class ModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.annot.desc.Annotation.Model");
+	public class MetadataElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.annot.desc.Annotation.Metadata");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cModelAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cImportSectionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cImportSectionXImportSectionParserRuleCall_2_0 = (RuleCall)cImportSectionAssignment_2.eContents().get(0);
-		private final Assignment cAnnotationsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAnnotationsXAnnotationParserRuleCall_3_0 = (RuleCall)cAnnotationsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Action cMetadataAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cMetaKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cImportSectionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cImportSectionXImportSectionParserRuleCall_3_0 = (RuleCall)cImportSectionAssignment_3.eContents().get(0);
+		private final Assignment cAnnotationsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAnnotationsXAnnotationParserRuleCall_4_0 = (RuleCall)cAnnotationsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Model:
-		//	{Model} "{" importSection=XImportSection?
+		//Metadata:
+		//	{Metadata} "#meta" "{" importSection=XImportSection?
 		//	annotations+=XAnnotation*
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Model} "{" importSection=XImportSection? annotations+=XAnnotation* "}"
+		//{Metadata} "#meta" "{" importSection=XImportSection? annotations+=XAnnotation* "}"
 		public Group getGroup() { return cGroup; }
 		
-		//{Model}
-		public Action getModelAction_0() { return cModelAction_0; }
+		//{Metadata}
+		public Action getMetadataAction_0() { return cMetadataAction_0; }
+		
+		//"#meta"
+		public Keyword getMetaKeyword_1() { return cMetaKeyword_1; }
 		
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//importSection=XImportSection?
-		public Assignment getImportSectionAssignment_2() { return cImportSectionAssignment_2; }
+		public Assignment getImportSectionAssignment_3() { return cImportSectionAssignment_3; }
 		
 		//XImportSection
-		public RuleCall getImportSectionXImportSectionParserRuleCall_2_0() { return cImportSectionXImportSectionParserRuleCall_2_0; }
+		public RuleCall getImportSectionXImportSectionParserRuleCall_3_0() { return cImportSectionXImportSectionParserRuleCall_3_0; }
 		
 		//annotations+=XAnnotation*
-		public Assignment getAnnotationsAssignment_3() { return cAnnotationsAssignment_3; }
+		public Assignment getAnnotationsAssignment_4() { return cAnnotationsAssignment_4; }
 		
 		//XAnnotation
-		public RuleCall getAnnotationsXAnnotationParserRuleCall_3_0() { return cAnnotationsXAnnotationParserRuleCall_3_0; }
+		public RuleCall getAnnotationsXAnnotationParserRuleCall_4_0() { return cAnnotationsXAnnotationParserRuleCall_4_0; }
 		
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 	
 	
-	private final ModelElements pModel;
+	private final MetadataElements pMetadata;
 	
 	private final Grammar grammar;
 	
@@ -86,7 +90,7 @@ public class AnnotationGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaXbaseWithAnnotations = gaXbaseWithAnnotations;
 		this.gaXbase = gaXbase;
 		this.gaXtype = gaXtype;
-		this.pModel = new ModelElements();
+		this.pMetadata = new MetadataElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -124,16 +128,16 @@ public class AnnotationGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//Model:
-	//	{Model} "{" importSection=XImportSection?
+	//Metadata:
+	//	{Metadata} "#meta" "{" importSection=XImportSection?
 	//	annotations+=XAnnotation*
 	//	"}";
-	public ModelElements getModelAccess() {
-		return pModel;
+	public MetadataElements getMetadataAccess() {
+		return pMetadata;
 	}
 	
-	public ParserRule getModelRule() {
-		return getModelAccess().getRule();
+	public ParserRule getMetadataRule() {
+		return getMetadataAccess().getRule();
 	}
 	
 	//XAnnotation:

@@ -74,7 +74,7 @@ public class AnnotationParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1_0_3(), "rule__XImportDeclaration__Alternatives_1_0_3");
-					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
+					put(grammarAccess.getMetadataAccess().getGroup(), "rule__Metadata__Group__0");
 					put(grammarAccess.getXAnnotationAccess().getGroup(), "rule__XAnnotation__Group__0");
 					put(grammarAccess.getXAnnotationAccess().getGroup_3(), "rule__XAnnotation__Group_3__0");
 					put(grammarAccess.getXAnnotationAccess().getGroup_3_1_0(), "rule__XAnnotation__Group_3_1_0__0");
@@ -274,8 +274,8 @@ public class AnnotationParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getGroup(), "rule__XImportDeclaration__Group__0");
 					put(grammarAccess.getXImportDeclarationAccess().getGroup_1_0(), "rule__XImportDeclaration__Group_1_0__0");
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
-					put(grammarAccess.getModelAccess().getImportSectionAssignment_2(), "rule__Model__ImportSectionAssignment_2");
-					put(grammarAccess.getModelAccess().getAnnotationsAssignment_3(), "rule__Model__AnnotationsAssignment_3");
+					put(grammarAccess.getMetadataAccess().getImportSectionAssignment_3(), "rule__Metadata__ImportSectionAssignment_3");
+					put(grammarAccess.getMetadataAccess().getAnnotationsAssignment_4(), "rule__Metadata__AnnotationsAssignment_4");
 					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_1_1(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_1");

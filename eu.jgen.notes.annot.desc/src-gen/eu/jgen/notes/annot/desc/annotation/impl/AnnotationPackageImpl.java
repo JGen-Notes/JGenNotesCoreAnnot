@@ -5,7 +5,7 @@ package eu.jgen.notes.annot.desc.annotation.impl;
 
 import eu.jgen.notes.annot.desc.annotation.AnnotationFactory;
 import eu.jgen.notes.annot.desc.annotation.AnnotationPackage;
-import eu.jgen.notes.annot.desc.annotation.Model;
+import eu.jgen.notes.annot.desc.annotation.Metadata;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -34,7 +34,7 @@ public class AnnotationPackageImpl extends EPackageImpl implements AnnotationPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelEClass = null;
+  private EClass metadataEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -110,9 +110,9 @@ public class AnnotationPackageImpl extends EPackageImpl implements AnnotationPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModel()
+  public EClass getMetadata()
   {
-    return modelEClass;
+    return metadataEClass;
   }
 
   /**
@@ -120,9 +120,9 @@ public class AnnotationPackageImpl extends EPackageImpl implements AnnotationPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_ImportSection()
+  public EReference getMetadata_ImportSection()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
+    return (EReference)metadataEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -130,9 +130,9 @@ public class AnnotationPackageImpl extends EPackageImpl implements AnnotationPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Annotations()
+  public EReference getMetadata_Annotations()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+    return (EReference)metadataEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -165,9 +165,9 @@ public class AnnotationPackageImpl extends EPackageImpl implements AnnotationPac
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__IMPORT_SECTION);
-    createEReference(modelEClass, MODEL__ANNOTATIONS);
+    metadataEClass = createEClass(METADATA);
+    createEReference(metadataEClass, METADATA__IMPORT_SECTION);
+    createEReference(metadataEClass, METADATA__ANNOTATIONS);
   }
 
   /**
@@ -205,9 +205,9 @@ public class AnnotationPackageImpl extends EPackageImpl implements AnnotationPac
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_ImportSection(), theXtypePackage.getXImportSection(), null, "importSection", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMetadata_ImportSection(), theXtypePackage.getXImportSection(), null, "importSection", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetadata_Annotations(), theXAnnotationsPackage.getXAnnotation(), null, "annotations", null, 0, -1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

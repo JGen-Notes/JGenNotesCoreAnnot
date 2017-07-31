@@ -43,7 +43,7 @@ import eu.jgen.notes.annot.desc.services.AnnotationGrammarAccess;
 
     @Override
     protected String getFirstRuleName() {
-    	return "Model";
+    	return "Metadata";
    	}
 
    	@Override
@@ -60,15 +60,15 @@ import eu.jgen.notes.annot.desc.services.AnnotationGrammarAccess;
     }
 }
 
-// Entry rule entryRuleModel
-entryRuleModel returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getModelRule()); }
-	iv_ruleModel=ruleModel
-	{ $current=$iv_ruleModel.current; }
+// Entry rule entryRuleMetadata
+entryRuleMetadata returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMetadataRule()); }
+	iv_ruleMetadata=ruleMetadata
+	{ $current=$iv_ruleMetadata.current; }
 	EOF;
 
-// Rule Model
-ruleModel returns [EObject current=null]
+// Rule Metadata
+ruleMetadata returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -79,28 +79,32 @@ ruleModel returns [EObject current=null]
 		(
 			{
 				$current = forceCreateModelElement(
-					grammarAccess.getModelAccess().getModelAction_0(),
+					grammarAccess.getMetadataAccess().getMetadataAction_0(),
 					$current);
 			}
 		)
-		otherlv_1='{'
+		otherlv_1='#meta'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getModelAccess().getLeftCurlyBracketKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getMetadataAccess().getMetaKeyword_1());
+		}
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getMetadataAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getModelAccess().getImportSectionXImportSectionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getMetadataAccess().getImportSectionXImportSectionParserRuleCall_3_0());
 				}
-				lv_importSection_2_0=ruleXImportSection
+				lv_importSection_3_0=ruleXImportSection
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelRule());
+						$current = createModelElementForParent(grammarAccess.getMetadataRule());
 					}
 					set(
 						$current,
 						"importSection",
-						lv_importSection_2_0,
+						lv_importSection_3_0,
 						"org.eclipse.xtext.xbase.Xtype.XImportSection");
 					afterParserOrEnumRuleCall();
 				}
@@ -109,25 +113,25 @@ ruleModel returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getModelAccess().getAnnotationsXAnnotationParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getMetadataAccess().getAnnotationsXAnnotationParserRuleCall_4_0());
 				}
-				lv_annotations_3_0=ruleXAnnotation
+				lv_annotations_4_0=ruleXAnnotation
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getModelRule());
+						$current = createModelElementForParent(grammarAccess.getMetadataRule());
 					}
 					add(
 						$current,
 						"annotations",
-						lv_annotations_3_0,
+						lv_annotations_4_0,
 						"org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations.XAnnotation");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_4='}'
+		otherlv_5='}'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getModelAccess().getRightCurlyBracketKeyword_4());
+			newLeafNode(otherlv_5, grammarAccess.getMetadataAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;

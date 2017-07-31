@@ -15,17 +15,21 @@ Require-Bundle: org.eclipse.xtext,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib,
- org.eclipse.emf.common
+ org.eclipse.emf.common,
+ eu.jgen.notes.automation;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: eu.jgen.notes.annot.desc.jvmmodel,
- eu.jgen.notes.annot.desc,
- eu.jgen.notes.annot.desc.scoping,
- eu.jgen.notes.annot.desc.annotation.util,
- eu.jgen.notes.annot.desc.services,
- eu.jgen.notes.annot.desc.parser.antlr,
- eu.jgen.notes.annot.desc.annotation.impl,
- eu.jgen.notes.annot.desc.parser.antlr.internal,
- eu.jgen.notes.annot.desc.validation,
+Export-Package: eu.jgen.notes.annot.desc,
  eu.jgen.notes.annot.desc.annotation,
- eu.jgen.notes.annot.desc.serializer
-Import-Package: org.apache.log4j
+ eu.jgen.notes.annot.desc.annotation.impl,
+ eu.jgen.notes.annot.desc.annotation.util,
+ eu.jgen.notes.annot.desc.jvmmodel,
+ eu.jgen.notes.annot.desc.parser.antlr,
+ eu.jgen.notes.annot.desc.parser.antlr.internal,
+ eu.jgen.notes.annot.desc.scoping,
+ eu.jgen.notes.annot.desc.serializer,
+ eu.jgen.notes.annot.desc.services,
+ eu.jgen.notes.annot.desc.validation,
+ eu.jgen.notes.annot.processor.base,
+ eu.jgen.notes.annot.processor.impl
+Import-Package: com.ca.gen.jmmi.schema,
+ org.apache.log4j

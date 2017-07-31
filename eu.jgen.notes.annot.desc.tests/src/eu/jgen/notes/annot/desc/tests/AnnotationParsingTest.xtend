@@ -4,19 +4,19 @@
 package eu.jgen.notes.annot.desc.tests
 
 import com.google.inject.Inject
-import eu.jgen.notes.annot.desc.annotation.Model
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+import eu.jgen.notes.annot.desc.annotation.Metadata
 
 @RunWith(XtextRunner)
 @InjectWith(AnnotationInjectorProvider)
 class AnnotationParsingTest {
 	@Inject
-	ParseHelper<Model> parseHelper
+	ParseHelper<Metadata> parseHelper
 	
 	@Test
 	def void loadModel() {

@@ -65,7 +65,7 @@ public class AnnotationFactoryImpl extends EFactoryImpl implements AnnotationFac
   {
     switch (eClass.getClassifierID())
     {
-      case AnnotationPackage.MODEL: return createModel();
+      case AnnotationPackage.METADATA: return createMetadata();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -76,10 +76,10 @@ public class AnnotationFactoryImpl extends EFactoryImpl implements AnnotationFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Model createModel()
+  public Metadata createMetadata()
   {
-    ModelImpl model = new ModelImpl();
-    return model;
+    MetadataImpl metadata = new MetadataImpl();
+    return metadata;
   }
 
   /**

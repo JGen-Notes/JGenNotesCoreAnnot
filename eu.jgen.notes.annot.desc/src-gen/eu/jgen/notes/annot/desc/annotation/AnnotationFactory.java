@@ -24,13 +24,13 @@ public interface AnnotationFactory extends EFactory
   AnnotationFactory eINSTANCE = eu.jgen.notes.annot.desc.annotation.impl.AnnotationFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
+   * Returns a new object of class '<em>Metadata</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
+   * @return a new object of class '<em>Metadata</em>'.
    * @generated
    */
-  Model createModel();
+  Metadata createMetadata();
 
   /**
    * Returns the package supported by this factory.

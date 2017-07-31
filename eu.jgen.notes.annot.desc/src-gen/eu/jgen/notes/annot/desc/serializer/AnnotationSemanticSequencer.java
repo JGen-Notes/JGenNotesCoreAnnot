@@ -5,7 +5,7 @@ package eu.jgen.notes.annot.desc.serializer;
 
 import com.google.inject.Inject;
 import eu.jgen.notes.annot.desc.annotation.AnnotationPackage;
-import eu.jgen.notes.annot.desc.annotation.Model;
+import eu.jgen.notes.annot.desc.annotation.Metadata;
 import eu.jgen.notes.annot.desc.services.AnnotationGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -78,8 +78,8 @@ public class AnnotationSemanticSequencer extends XbaseWithAnnotationsSemanticSeq
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == AnnotationPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case AnnotationPackage.MODEL:
-				sequence_Model(context, (Model) semanticObject); 
+			case AnnotationPackage.METADATA:
+				sequence_Metadata(context, (Metadata) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -388,12 +388,12 @@ public class AnnotationSemanticSequencer extends XbaseWithAnnotationsSemanticSeq
 	
 	/**
 	 * Contexts:
-	 *     Model returns Model
+	 *     Metadata returns Metadata
 	 *
 	 * Constraint:
 	 *     (importSection=XImportSection? annotations+=XAnnotation*)
 	 */
-	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
+	protected void sequence_Metadata(ISerializationContext context, Metadata semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

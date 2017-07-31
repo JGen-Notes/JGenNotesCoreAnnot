@@ -4,8 +4,8 @@ generate annotation "http://www.jgen.eu/notes/annot/desc/Annotation"
 
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
 
-Model:
+Metadata:
 	
-	{Model} "{" importSection=XImportSection?
+	{Metadata} "#meta" "{" importSection=XImportSection?
 		annotations+=XAnnotation* 
 		"}";

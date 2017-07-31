@@ -6,9 +6,9 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.13" usedGenPackages="platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
   <genPackages prefix="Annotation" basePackage="eu.jgen.notes.annot.desc" disposableProviderFactory="true"
       fileExtensions="desc" ecorePackage="Annotation.ecore#/">
-    <genClasses ecoreClass="Annotation.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Annotation.ecore#//Model/importSection"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Annotation.ecore#//Model/annotations"/>
+    <genClasses ecoreClass="Annotation.ecore#//Metadata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Annotation.ecore#//Metadata/importSection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Annotation.ecore#//Metadata/annotations"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

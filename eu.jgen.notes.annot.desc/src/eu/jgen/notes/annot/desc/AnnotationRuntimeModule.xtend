@@ -3,9 +3,22 @@
  */
 package eu.jgen.notes.annot.desc
 
+ 
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class AnnotationRuntimeModule extends AbstractAnnotationRuntimeModule {
+	
+	
+	override bindDiagnostician() {
+		super.bindDiagnostician()
+	}
+	
+	def public Class<? > bindAnnotationWorker() {
+		return  eu.jgen.notes.annot.processor.impl.AnnotationWorker
+	}
+	
+	
+	
 }

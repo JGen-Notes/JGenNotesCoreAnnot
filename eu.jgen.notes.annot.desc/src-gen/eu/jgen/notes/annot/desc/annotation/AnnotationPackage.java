@@ -57,14 +57,14 @@ public interface AnnotationPackage extends EPackage
   AnnotationPackage eINSTANCE = eu.jgen.notes.annot.desc.annotation.impl.AnnotationPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link eu.jgen.notes.annot.desc.annotation.impl.ModelImpl <em>Model</em>}' class.
+   * The meta object id for the '{@link eu.jgen.notes.annot.desc.annotation.impl.MetadataImpl <em>Metadata</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see eu.jgen.notes.annot.desc.annotation.impl.ModelImpl
-   * @see eu.jgen.notes.annot.desc.annotation.impl.AnnotationPackageImpl#getModel()
+   * @see eu.jgen.notes.annot.desc.annotation.impl.MetadataImpl
+   * @see eu.jgen.notes.annot.desc.annotation.impl.AnnotationPackageImpl#getMetadata()
    * @generated
    */
-  int MODEL = 0;
+  int METADATA = 0;
 
   /**
    * The feature id for the '<em><b>Import Section</b></em>' containment reference.
@@ -73,7 +73,7 @@ public interface AnnotationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__IMPORT_SECTION = 0;
+  int METADATA__IMPORT_SECTION = 0;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -82,49 +82,49 @@ public interface AnnotationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__ANNOTATIONS = 1;
+  int METADATA__ANNOTATIONS = 1;
 
   /**
-   * The number of structural features of the '<em>Model</em>' class.
+   * The number of structural features of the '<em>Metadata</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 2;
+  int METADATA_FEATURE_COUNT = 2;
 
 
   /**
-   * Returns the meta object for class '{@link eu.jgen.notes.annot.desc.annotation.Model <em>Model</em>}'.
+   * Returns the meta object for class '{@link eu.jgen.notes.annot.desc.annotation.Metadata <em>Metadata</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model</em>'.
-   * @see eu.jgen.notes.annot.desc.annotation.Model
+   * @return the meta object for class '<em>Metadata</em>'.
+   * @see eu.jgen.notes.annot.desc.annotation.Metadata
    * @generated
    */
-  EClass getModel();
+  EClass getMetadata();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.jgen.notes.annot.desc.annotation.Model#getImportSection <em>Import Section</em>}'.
+   * Returns the meta object for the containment reference '{@link eu.jgen.notes.annot.desc.annotation.Metadata#getImportSection <em>Import Section</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Import Section</em>'.
-   * @see eu.jgen.notes.annot.desc.annotation.Model#getImportSection()
-   * @see #getModel()
+   * @see eu.jgen.notes.annot.desc.annotation.Metadata#getImportSection()
+   * @see #getMetadata()
    * @generated
    */
-  EReference getModel_ImportSection();
+  EReference getMetadata_ImportSection();
 
   /**
-   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.annot.desc.annotation.Model#getAnnotations <em>Annotations</em>}'.
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.annot.desc.annotation.Metadata#getAnnotations <em>Annotations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Annotations</em>'.
-   * @see eu.jgen.notes.annot.desc.annotation.Model#getAnnotations()
-   * @see #getModel()
+   * @see eu.jgen.notes.annot.desc.annotation.Metadata#getAnnotations()
+   * @see #getMetadata()
    * @generated
    */
-  EReference getModel_Annotations();
+  EReference getMetadata_Annotations();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -150,14 +150,14 @@ public interface AnnotationPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link eu.jgen.notes.annot.desc.annotation.impl.ModelImpl <em>Model</em>}' class.
+     * The meta object literal for the '{@link eu.jgen.notes.annot.desc.annotation.impl.MetadataImpl <em>Metadata</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see eu.jgen.notes.annot.desc.annotation.impl.ModelImpl
-     * @see eu.jgen.notes.annot.desc.annotation.impl.AnnotationPackageImpl#getModel()
+     * @see eu.jgen.notes.annot.desc.annotation.impl.MetadataImpl
+     * @see eu.jgen.notes.annot.desc.annotation.impl.AnnotationPackageImpl#getMetadata()
      * @generated
      */
-    EClass MODEL = eINSTANCE.getModel();
+    EClass METADATA = eINSTANCE.getMetadata();
 
     /**
      * The meta object literal for the '<em><b>Import Section</b></em>' containment reference feature.
@@ -165,7 +165,7 @@ public interface AnnotationPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__IMPORT_SECTION = eINSTANCE.getModel_ImportSection();
+    EReference METADATA__IMPORT_SECTION = eINSTANCE.getMetadata_ImportSection();
 
     /**
      * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
@@ -173,7 +173,7 @@ public interface AnnotationPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__ANNOTATIONS = eINSTANCE.getModel_Annotations();
+    EReference METADATA__ANNOTATIONS = eINSTANCE.getMetadata_Annotations();
 
   }
 

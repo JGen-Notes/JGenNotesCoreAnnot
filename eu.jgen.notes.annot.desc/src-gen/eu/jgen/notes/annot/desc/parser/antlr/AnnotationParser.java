@@ -27,7 +27,7 @@ public class AnnotationParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "Metadata";
 	}
 
 	public AnnotationGrammarAccess getGrammarAccess() {

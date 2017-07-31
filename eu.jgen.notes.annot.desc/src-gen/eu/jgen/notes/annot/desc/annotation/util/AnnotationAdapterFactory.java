@@ -76,9 +76,9 @@ public class AnnotationAdapterFactory extends AdapterFactoryImpl
     new AnnotationSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModel(Model object)
+      public Adapter caseMetadata(Metadata object)
       {
-        return createModelAdapter();
+        return createMetadataAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -103,16 +103,16 @@ public class AnnotationAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link eu.jgen.notes.annot.desc.annotation.Model <em>Model</em>}'.
+   * Creates a new adapter for an object of class '{@link eu.jgen.notes.annot.desc.annotation.Metadata <em>Metadata</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see eu.jgen.notes.annot.desc.annotation.Model
+   * @see eu.jgen.notes.annot.desc.annotation.Metadata
    * @generated
    */
-  public Adapter createModelAdapter()
+  public Adapter createMetadataAdapter()
   {
     return null;
   }

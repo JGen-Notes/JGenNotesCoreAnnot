@@ -4,7 +4,7 @@
 package eu.jgen.notes.annot.desc.annotation.impl;
 
 import eu.jgen.notes.annot.desc.annotation.AnnotationPackage;
-import eu.jgen.notes.annot.desc.annotation.Model;
+import eu.jgen.notes.annot.desc.annotation.Metadata;
 
 import java.util.Collection;
 
@@ -28,19 +28,19 @@ import org.eclipse.xtext.xtype.XImportSection;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Model</b></em>'.
+ * An implementation of the model object '<em><b>Metadata</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.jgen.notes.annot.desc.annotation.impl.ModelImpl#getImportSection <em>Import Section</em>}</li>
- *   <li>{@link eu.jgen.notes.annot.desc.annotation.impl.ModelImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link eu.jgen.notes.annot.desc.annotation.impl.MetadataImpl#getImportSection <em>Import Section</em>}</li>
+ *   <li>{@link eu.jgen.notes.annot.desc.annotation.impl.MetadataImpl#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModelImpl extends MinimalEObjectImpl.Container implements Model
+public class MetadataImpl extends MinimalEObjectImpl.Container implements Metadata
 {
   /**
    * The cached value of the '{@link #getImportSection() <em>Import Section</em>}' containment reference.
@@ -67,7 +67,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ModelImpl()
+  protected MetadataImpl()
   {
     super();
   }
@@ -80,7 +80,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   @Override
   protected EClass eStaticClass()
   {
-    return AnnotationPackage.Literals.MODEL;
+    return AnnotationPackage.Literals.METADATA;
   }
 
   /**
@@ -104,7 +104,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     importSection = newImportSection;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnnotationPackage.MODEL__IMPORT_SECTION, oldImportSection, newImportSection);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnnotationPackage.METADATA__IMPORT_SECTION, oldImportSection, newImportSection);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -121,14 +121,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       NotificationChain msgs = null;
       if (importSection != null)
-        msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AnnotationPackage.MODEL__IMPORT_SECTION, null, msgs);
+        msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AnnotationPackage.METADATA__IMPORT_SECTION, null, msgs);
       if (newImportSection != null)
-        msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AnnotationPackage.MODEL__IMPORT_SECTION, null, msgs);
+        msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AnnotationPackage.METADATA__IMPORT_SECTION, null, msgs);
       msgs = basicSetImportSection(newImportSection, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AnnotationPackage.MODEL__IMPORT_SECTION, newImportSection, newImportSection));
+      eNotify(new ENotificationImpl(this, Notification.SET, AnnotationPackage.METADATA__IMPORT_SECTION, newImportSection, newImportSection));
   }
 
   /**
@@ -140,7 +140,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (annotations == null)
     {
-      annotations = new EObjectContainmentEList<XAnnotation>(XAnnotation.class, this, AnnotationPackage.MODEL__ANNOTATIONS);
+      annotations = new EObjectContainmentEList<XAnnotation>(XAnnotation.class, this, AnnotationPackage.METADATA__ANNOTATIONS);
     }
     return annotations;
   }
@@ -155,9 +155,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AnnotationPackage.MODEL__IMPORT_SECTION:
+      case AnnotationPackage.METADATA__IMPORT_SECTION:
         return basicSetImportSection(null, msgs);
-      case AnnotationPackage.MODEL__ANNOTATIONS:
+      case AnnotationPackage.METADATA__ANNOTATIONS:
         return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -173,9 +173,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AnnotationPackage.MODEL__IMPORT_SECTION:
+      case AnnotationPackage.METADATA__IMPORT_SECTION:
         return getImportSection();
-      case AnnotationPackage.MODEL__ANNOTATIONS:
+      case AnnotationPackage.METADATA__ANNOTATIONS:
         return getAnnotations();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -192,10 +192,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AnnotationPackage.MODEL__IMPORT_SECTION:
+      case AnnotationPackage.METADATA__IMPORT_SECTION:
         setImportSection((XImportSection)newValue);
         return;
-      case AnnotationPackage.MODEL__ANNOTATIONS:
+      case AnnotationPackage.METADATA__ANNOTATIONS:
         getAnnotations().clear();
         getAnnotations().addAll((Collection<? extends XAnnotation>)newValue);
         return;
@@ -213,10 +213,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AnnotationPackage.MODEL__IMPORT_SECTION:
+      case AnnotationPackage.METADATA__IMPORT_SECTION:
         setImportSection((XImportSection)null);
         return;
-      case AnnotationPackage.MODEL__ANNOTATIONS:
+      case AnnotationPackage.METADATA__ANNOTATIONS:
         getAnnotations().clear();
         return;
     }
@@ -233,12 +233,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AnnotationPackage.MODEL__IMPORT_SECTION:
+      case AnnotationPackage.METADATA__IMPORT_SECTION:
         return importSection != null;
-      case AnnotationPackage.MODEL__ANNOTATIONS:
+      case AnnotationPackage.METADATA__ANNOTATIONS:
         return annotations != null && !annotations.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ModelImpl
+} //MetadataImpl

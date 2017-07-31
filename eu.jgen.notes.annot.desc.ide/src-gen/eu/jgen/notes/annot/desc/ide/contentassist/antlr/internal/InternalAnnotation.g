@@ -50,25 +50,25 @@ import eu.jgen.notes.annot.desc.services.AnnotationGrammarAccess;
 	}
 }
 
-// Entry rule entryRuleModel
-entryRuleModel
+// Entry rule entryRuleMetadata
+entryRuleMetadata
 :
-{ before(grammarAccess.getModelRule()); }
-	 ruleModel
-{ after(grammarAccess.getModelRule()); } 
+{ before(grammarAccess.getMetadataRule()); }
+	 ruleMetadata
+{ after(grammarAccess.getMetadataRule()); } 
 	 EOF 
 ;
 
-// Rule Model
-ruleModel 
+// Rule Metadata
+ruleMetadata 
 	@init {
 		int stackSize = keepStackSize();
 	}
 	:
 	(
-		{ before(grammarAccess.getModelAccess().getGroup()); }
-		(rule__Model__Group__0)
-		{ after(grammarAccess.getModelAccess().getGroup()); }
+		{ before(grammarAccess.getMetadataAccess().getGroup()); }
+		(rule__Metadata__Group__0)
+		{ after(grammarAccess.getMetadataAccess().getGroup()); }
 	)
 ;
 finally {
@@ -3283,134 +3283,161 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__0
+rule__Metadata__Group__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Model__Group__0__Impl
-	rule__Model__Group__1
+	rule__Metadata__Group__0__Impl
+	rule__Metadata__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__0__Impl
+rule__Metadata__Group__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getModelAccess().getModelAction_0()); }
+	{ before(grammarAccess.getMetadataAccess().getMetadataAction_0()); }
 	()
-	{ after(grammarAccess.getModelAccess().getModelAction_0()); }
+	{ after(grammarAccess.getMetadataAccess().getMetadataAction_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__1
+rule__Metadata__Group__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Model__Group__1__Impl
-	rule__Model__Group__2
+	rule__Metadata__Group__1__Impl
+	rule__Metadata__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__1__Impl
+rule__Metadata__Group__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getModelAccess().getLeftCurlyBracketKeyword_1()); }
+	{ before(grammarAccess.getMetadataAccess().getMetaKeyword_1()); }
+	'#meta'
+	{ after(grammarAccess.getMetadataAccess().getMetaKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Metadata__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Metadata__Group__2__Impl
+	rule__Metadata__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Metadata__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getMetadataAccess().getLeftCurlyBracketKeyword_2()); }
 	'{'
-	{ after(grammarAccess.getModelAccess().getLeftCurlyBracketKeyword_1()); }
+	{ after(grammarAccess.getMetadataAccess().getLeftCurlyBracketKeyword_2()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__2
+rule__Metadata__Group__3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Model__Group__2__Impl
-	rule__Model__Group__3
+	rule__Metadata__Group__3__Impl
+	rule__Metadata__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__2__Impl
+rule__Metadata__Group__3__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getModelAccess().getImportSectionAssignment_2()); }
-	(rule__Model__ImportSectionAssignment_2)?
-	{ after(grammarAccess.getModelAccess().getImportSectionAssignment_2()); }
+	{ before(grammarAccess.getMetadataAccess().getImportSectionAssignment_3()); }
+	(rule__Metadata__ImportSectionAssignment_3)?
+	{ after(grammarAccess.getMetadataAccess().getImportSectionAssignment_3()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__3
+rule__Metadata__Group__4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Model__Group__3__Impl
-	rule__Model__Group__4
+	rule__Metadata__Group__4__Impl
+	rule__Metadata__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__3__Impl
+rule__Metadata__Group__4__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getModelAccess().getAnnotationsAssignment_3()); }
-	(rule__Model__AnnotationsAssignment_3)*
-	{ after(grammarAccess.getModelAccess().getAnnotationsAssignment_3()); }
+	{ before(grammarAccess.getMetadataAccess().getAnnotationsAssignment_4()); }
+	(rule__Metadata__AnnotationsAssignment_4)*
+	{ after(grammarAccess.getMetadataAccess().getAnnotationsAssignment_4()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__4
+rule__Metadata__Group__5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Model__Group__4__Impl
+	rule__Metadata__Group__5__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__Group__4__Impl
+rule__Metadata__Group__5__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getModelAccess().getRightCurlyBracketKeyword_4()); }
+	{ before(grammarAccess.getMetadataAccess().getRightCurlyBracketKeyword_5()); }
 	'}'
-	{ after(grammarAccess.getModelAccess().getRightCurlyBracketKeyword_4()); }
+	{ after(grammarAccess.getMetadataAccess().getRightCurlyBracketKeyword_5()); }
 )
 ;
 finally {
@@ -16257,30 +16284,30 @@ finally {
 }
 
 
-rule__Model__ImportSectionAssignment_2
+rule__Metadata__ImportSectionAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getModelAccess().getImportSectionXImportSectionParserRuleCall_2_0()); }
+		{ before(grammarAccess.getMetadataAccess().getImportSectionXImportSectionParserRuleCall_3_0()); }
 		ruleXImportSection
-		{ after(grammarAccess.getModelAccess().getImportSectionXImportSectionParserRuleCall_2_0()); }
+		{ after(grammarAccess.getMetadataAccess().getImportSectionXImportSectionParserRuleCall_3_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__AnnotationsAssignment_3
+rule__Metadata__AnnotationsAssignment_4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getModelAccess().getAnnotationsXAnnotationParserRuleCall_3_0()); }
+		{ before(grammarAccess.getMetadataAccess().getAnnotationsXAnnotationParserRuleCall_4_0()); }
 		ruleXAnnotation
-		{ after(grammarAccess.getModelAccess().getAnnotationsXAnnotationParserRuleCall_3_0()); }
+		{ after(grammarAccess.getMetadataAccess().getAnnotationsXAnnotationParserRuleCall_4_0()); }
 	)
 ;
 finally {
