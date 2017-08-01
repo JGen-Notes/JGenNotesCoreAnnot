@@ -11,28 +11,24 @@ import eu.jgen.notes.annot.processor.impl.AnnotationObject;
 import eu.jgen.notes.annot.processor.impl.DefaultScanEnvironment;
 
 @javax.annotation.processing.SupportedAnnotationTypes(value = { "" })
-@SupportedAnnotationTypes(value = { "eu.jgen.notes.annot.processor.tests.impl.Author",
-		"eu.jgen.notes.annot.processor.tests.impl.Function" })
-public class ProcessorImpl extends AbstractProcessor {
+@SupportedAnnotationTypes(value = { "eu.jgen.notes.annot.processor.tests.sample.Author",
+		"eu.jgen.notes.annot.processor.tests.sample.Function" })
+public class SampleProcessor extends AbstractProcessor {
 
-	public ProcessorImpl() {  
+	public SampleProcessor() {
 		super();
 	}
 
 	@Override
-	public boolean process(Set<XAnnotation> annotations, ScanEnvironment roundEnv) {
+	public boolean process(Set<XAnnotation> annotations, ScanEnvironment scanEnv) {
+		System.out.println("\nSupported Annotations:");
 		for (XAnnotation annotation : annotations) {
 			System.out.println(annotation.getAnnotationType().getQualifiedName());
 		}
-		
-		DefaultScanEnvironment x = (DefaultScanEnvironment) roundEnv;
-		
-		
-		for(AnnotationObject object : x.foundObjects) {
-			System.out.println(object.getjGenObject());
+		System.out.println("\n\nAnnotation Objects Found:");
+		for (AnnotationObject annotationObject : scanEnv.getScanResult()) {
+			System.out.println("\n" + annotationObject);
 		}
-		
-
 		return true;
 	}
 

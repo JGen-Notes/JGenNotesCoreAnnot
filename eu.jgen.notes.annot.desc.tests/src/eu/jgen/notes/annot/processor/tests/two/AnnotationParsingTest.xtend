@@ -25,10 +25,11 @@ class AnnotationParsingTest {
 	@Test   
  	def void loadModel() {
 		''' 
-			{
-				import a.b.Hello;
-				@Hello
-			}
-		'''.parse.assertNoErrors
+		#meta{
+		import eu.jgen.notes.annot.processor.tests.sample.Author;
+		import eu.jgen.notes.annot.processor.tests.sample.Function;
+		@Author (name="John",date="2017-01-01",version="1.0")
+		@Function (modname="COSTAM")
+		}		'''.parse.assertNoErrors
 	}
 }

@@ -22,9 +22,9 @@ import com.ca.gen.jmmi.schema.ObjTypeHelper
 import com.ca.gen.jmmi.schema.ObjTypeCode
 import eu.jgen.notes.annot.desc.annotation.Metadata
 import eu.jgen.notes.annot.desc.tests.AnnotationInjectorProvider
-import eu.jgen.notes.annot.processor.tests.sample.ProcessorImpl
 import eu.jgen.notes.annot.processor.impl.DefaultMessager
 import eu.jgen.notes.annot.processor.impl.DiagnosticKind
+import eu.jgen.notes.annot.processor.tests.sample.SampleProcessor
 
 @RunWith(XtextRunner)
 @InjectWith(AnnotationInjectorProvider)
@@ -47,10 +47,8 @@ class ProcessorTest {
 		ency = factory.createEncyclopedia()
 		ency.connect()
 		genModel = ency.findModels().get(0)
-//		val worker = new AnnotationWorker(new ProcessorImpl(), resourceSet);
-//		worker.process(Collections.emptySet())
 		var objects = genModel.findTypeObjects(ObjTypeHelper.getCode(ObjTypeCode.ACBLKBSD))
-		worker.initProcessor(new ProcessorImpl()).setSources(objects).activate
+		worker.initProcessor(new SampleProcessor()).setSources(objects).activate
 
 	}
 }

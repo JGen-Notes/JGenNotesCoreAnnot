@@ -25,20 +25,24 @@ package eu.jgen.notes.annot.processor.impl;
 
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
+import com.ca.gen.jmmi.schema.ObjTypeHelper;
+import com.ca.gen.jmmi.schema.PrpTypeCode;
+import com.ca.gen.jmmi.schema.PrpTypeHelper;
+
 import eu.jgen.notes.automation.wrapper.JGenObject;
 
 /**
- * Object returned by the annotation worker after model scan is complete. Object allows to associate annotation 
- * with the object concrete object in the model.
+ * Object returned by the annotation worker after model scan is complete. Object
+ * allows to associate annotation with the object concrete object in the model.
  * 
  * @author Marek Stankiewicz
  * @since 1.0
  */
 public class AnnotationObject {
-	
+
 	private JGenObject jGenObject;
 	private XAnnotation xAnnotation;
-	
+
 	public AnnotationObject(JGenObject jGenObject, XAnnotation xAnnotation) {
 		super();
 		this.jGenObject = jGenObject;
@@ -53,5 +57,12 @@ public class AnnotationObject {
 		return xAnnotation;
 	}
 
+	public String toString() {
+		return "AnnotationObject:  id=" + jGenObject.getId() + ", mnemonic="
+				+ ObjTypeHelper.valueOf( (short) jGenObject.getObjTypeCode()) + ", name="
+				+ jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.NAME)) + ", annotation.type="
+				+ xAnnotation.getAnnotationType().getIdentifier() + "\ndesc:\n"
+				+ jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.DESC));
+	}
 
 }

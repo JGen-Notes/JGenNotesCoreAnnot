@@ -35,16 +35,17 @@ public class AnnotationParsingTest {
   public void loadModel() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("{");
+      _builder.append("#meta{");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("import a.b.Hello;");
+      _builder.append("import eu.jgen.notes.annot.processor.tests.sample.Author;");
       _builder.newLine();
-      _builder.append("\t");
-      _builder.append("@Hello");
+      _builder.append("import eu.jgen.notes.annot.processor.tests.sample.Function;");
       _builder.newLine();
-      _builder.append("}");
+      _builder.append("@Author (name=\"John\",date=\"2017-01-01\",version=\"1.0\")");
       _builder.newLine();
+      _builder.append("@Function (modname=\"COSTAM\")");
+      _builder.newLine();
+      _builder.append("}\t\t");
       this._validationTestHelper.assertNoErrors(this._parseHelper.parse(_builder));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

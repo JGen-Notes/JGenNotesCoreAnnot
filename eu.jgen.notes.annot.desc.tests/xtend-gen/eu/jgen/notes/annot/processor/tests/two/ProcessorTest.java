@@ -9,7 +9,7 @@ import com.google.inject.Inject;
 import eu.jgen.notes.annot.desc.annotation.Metadata;
 import eu.jgen.notes.annot.desc.tests.AnnotationInjectorProvider;
 import eu.jgen.notes.annot.processor.impl.AnnotationWorker;
-import eu.jgen.notes.annot.processor.tests.sample.ProcessorImpl;
+import eu.jgen.notes.annot.processor.tests.sample.SampleProcessor;
 import eu.jgen.notes.automation.wrapper.JGenEncyclopedia;
 import eu.jgen.notes.automation.wrapper.JGenFactory;
 import eu.jgen.notes.automation.wrapper.JGenModel;
@@ -55,7 +55,7 @@ public class ProcessorTest {
     ProcessorTest.ency.connect();
     ProcessorTest.genModel = ProcessorTest.ency.findModels()[0];
     JGenObject[] objects = ProcessorTest.genModel.findTypeObjects(ObjTypeHelper.getCode(ObjTypeCode.ACBLKBSD));
-    ProcessorImpl _processorImpl = new ProcessorImpl();
-    this.worker.initProcessor(_processorImpl).setSources(objects).activate();
+    SampleProcessor _sampleProcessor = new SampleProcessor();
+    this.worker.initProcessor(_sampleProcessor).setSources(objects).activate();
   }
 }
