@@ -21,7 +21,7 @@ import eu.jgen.notes.annot.processor.impl.DiagnosticKind
 @InjectWith(AnnotationInjectorProvider)
 class MessangerParsingTest { 
 	@Inject
-	ParseHelper<Metadata> parseHelper   
+	ParseHelper<Metadata> parseHelper    
 		@Inject extension ParseHelper<Metadata>
 		@Inject extension ValidationTestHelper
 	

@@ -30,7 +30,7 @@ import eu.jgen.notes.annot.processor.tests.sample.SampleProcessor
 @InjectWith(AnnotationInjectorProvider)
 class ProcessorTest {
 
-	static JGenEncyclopedia ency
+	static JGenEncyclopedia ency 
 	static JGenModel genModel  
 
 	@Inject
