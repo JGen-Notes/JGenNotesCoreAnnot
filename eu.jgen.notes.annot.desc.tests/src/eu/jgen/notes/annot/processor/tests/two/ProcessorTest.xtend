@@ -11,8 +11,6 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
-import eu.jgen.notes.annot.processor.impl.MessageKind
-import eu.jgen.notes.annot.processor.impl.MessagerImpl
  
 import org.eclipse.xtext.resource.XtextResourceSet
 import eu.jgen.notes.annot.processor.impl.AnnotationWorker
@@ -25,6 +23,8 @@ import com.ca.gen.jmmi.schema.ObjTypeCode
 import eu.jgen.notes.annot.desc.annotation.Metadata
 import eu.jgen.notes.annot.desc.tests.AnnotationInjectorProvider
 import eu.jgen.notes.annot.processor.tests.sample.ProcessorImpl
+import eu.jgen.notes.annot.processor.impl.DefaultMessager
+import eu.jgen.notes.annot.processor.impl.DiagnosticKind
 
 @RunWith(XtextRunner)
 @InjectWith(AnnotationInjectorProvider)

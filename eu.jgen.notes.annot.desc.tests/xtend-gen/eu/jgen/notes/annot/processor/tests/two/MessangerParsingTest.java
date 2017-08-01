@@ -6,8 +6,8 @@ package eu.jgen.notes.annot.processor.tests.two;
 import com.google.inject.Inject;
 import eu.jgen.notes.annot.desc.annotation.Metadata;
 import eu.jgen.notes.annot.desc.tests.AnnotationInjectorProvider;
-import eu.jgen.notes.annot.processor.impl.MessageKind;
-import eu.jgen.notes.annot.processor.impl.MessagerImpl;
+import eu.jgen.notes.annot.processor.impl.DefaultMessager;
+import eu.jgen.notes.annot.processor.impl.DiagnosticKind;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
@@ -33,6 +33,6 @@ public class MessangerParsingTest {
   
   @Test
   public void loadModel() {
-    new MessagerImpl().printMessage(MessageKind.INFO, "Hello");
+    new DefaultMessager().printMessage(DiagnosticKind.INFO, "Hello");
   }
 }

@@ -36,14 +36,14 @@ public class AnnotationWorker {
 	@Inject
 	private XtextResourceSet resourceSet;
 
-	private ProcessingEnvironmentImpl processingEnv;
+	private DefaultProcessingEnvironment processingEnv;
 
 	public AnnotationWorker() {
 	}
 
 	public AnnotationWorker initProcessor(Processor processor) {
 		this.processor = processor;
-		this.processingEnv = new ProcessingEnvironmentImpl(resourceSet);
+		this.processingEnv = new DefaultProcessingEnvironment(resourceSet);
 		return this;
 	}
 
@@ -60,7 +60,7 @@ public class AnnotationWorker {
 	}
 
 	private void processObject(JGenObject jGenObject) {
-		ScanEnvironment roundEnv = new ScanEnvironmentImpl();
+		ScanEnvironment roundEnv = new DefaultScanEnvironment();
 		String text = jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.DESC));
 		if (text.length() >= 5 && text.startsWith("#meta")) {
 			parseAndValidateDescription(roundEnv, jGenObject, text,

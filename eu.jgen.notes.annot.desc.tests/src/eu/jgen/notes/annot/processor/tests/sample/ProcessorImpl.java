@@ -9,7 +9,7 @@ import eu.jgen.notes.annot.processor.base.ScanEnvironment;
 import eu.jgen.notes.annot.processor.base.SupportedAnnotationTypes;
 import eu.jgen.notes.annot.processor.impl.AbstractProcessor;
 import eu.jgen.notes.annot.processor.impl.AnnotationObject;
-import eu.jgen.notes.annot.processor.impl.ScanEnvironmentImpl;
+import eu.jgen.notes.annot.processor.impl.DefaultScanEnvironment;
 import eu.jgen.notes.automation.wrapper.JGenObject;
 
 @javax.annotation.processing.SupportedAnnotationTypes(value = { "" })
@@ -27,7 +27,7 @@ public class ProcessorImpl extends AbstractProcessor {
 			System.out.println(annotation.getAnnotationType().getQualifiedName());
 		}
 		
-		ScanEnvironmentImpl x = (ScanEnvironmentImpl) roundEnv;
+		DefaultScanEnvironment x = (DefaultScanEnvironment) roundEnv;
 		
 		
 		for(AnnotationObject object : x.foundObjects) {

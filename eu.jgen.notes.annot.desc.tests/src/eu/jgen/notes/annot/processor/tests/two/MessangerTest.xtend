@@ -12,10 +12,10 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
-import eu.jgen.notes.annot.processor.impl.MessageKind
-import eu.jgen.notes.annot.processor.impl.MessagerImpl
 import eu.jgen.notes.annot.desc.annotation.Metadata
 import eu.jgen.notes.annot.desc.tests.AnnotationInjectorProvider
+import eu.jgen.notes.annot.processor.impl.DefaultMessager
+import eu.jgen.notes.annot.processor.impl.DiagnosticKind
 
 @RunWith(XtextRunner)
 @InjectWith(AnnotationInjectorProvider)
@@ -27,6 +27,6 @@ class MessangerParsingTest {
 	
 	@Test  
  	def void loadModel() {
-			new MessagerImpl().printMessage(MessageKind.INFO, "Hello")
+			new DefaultMessager().printMessage(DiagnosticKind.INFO, "Hello")
 	}
 }

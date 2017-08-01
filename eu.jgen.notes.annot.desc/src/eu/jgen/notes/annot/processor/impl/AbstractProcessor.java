@@ -26,12 +26,6 @@ package eu.jgen.notes.annot.processor.impl;
 import java.util.Collections;
 import java.util.Set;
 
-import javax.annotation.processing.Completion;
-import javax.lang.model.element.AnnotationMirror;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.TypeElement;
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 import com.google.common.collect.Sets;
@@ -51,7 +45,7 @@ public abstract class AbstractProcessor implements Processor {
 		SupportedAnnotationTypes supportedTypes = this.getClass().getAnnotation(SupportedAnnotationTypes.class);
 		if (supportedTypes == null) {
 			if (initialized)
-				processingEnv.getMessager().printMessage(MessageKind.WARNING,
+				processingEnv.getMessager().printMessage(DiagnosticKind.WARNING,
 					"No SupportedAnnotationTypes annotation " + "found on " + this.getClass().getName() +
 						", returning an empty set.");
 					return Collections.emptySet();
@@ -61,21 +55,12 @@ public abstract class AbstractProcessor implements Processor {
 
 	@Override
 	public void init(ProcessingEnvironment processingEnv) {
-		this.processingEnv = processingEnv;
-		
+		this.processingEnv = processingEnv;		
 	}
   
 	@Override
-	public boolean process(Set<XAnnotation> annotations, ScanEnvironment roundEnv) {
-		// TODO Auto-generated method stub
+	public boolean process(Set<XAnnotation> annotations, ScanEnvironment scanEnv) {
 		return false;
-	}
-
-	@Override
-	public Iterable<? extends Completion> getCompletions(Element element, AnnotationMirror annotation1,
-			ExecutableElement member, String userText) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
