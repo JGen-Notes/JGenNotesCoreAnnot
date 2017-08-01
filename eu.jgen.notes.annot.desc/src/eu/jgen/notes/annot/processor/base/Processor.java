@@ -27,6 +27,10 @@ import java.util.Set;
 
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
+/** *
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public interface Processor {
 
  /**

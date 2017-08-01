@@ -28,6 +28,12 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import eu.jgen.notes.annot.processor.base.Messager;
 import eu.jgen.notes.annot.processor.base.ProcessingEnvironment;
 
+/**
+ * This is default implementation of the <code>ProcessingEnvironment</code>.
+ * 
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public class DefaultProcessingEnvironment implements ProcessingEnvironment  {
 	
  private XtextResourceSet resourceSet;

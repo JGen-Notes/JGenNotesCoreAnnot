@@ -34,6 +34,10 @@ import java.lang.annotation.Target;
 @Target(TYPE)
 @Retention(RUNTIME)
 
+/** *
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public  @interface SupportedAnnotationTypes {
 
 	 String [] value();

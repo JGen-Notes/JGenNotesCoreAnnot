@@ -4,6 +4,10 @@ package eu.jgen.notes.annot.processor.base;
 import eu.jgen.notes.annot.processor.impl.DiagnosticKind;
 import eu.jgen.notes.automation.wrapper.JGenObject;
 
+/** *
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public interface Messager {
 	
 	  /**

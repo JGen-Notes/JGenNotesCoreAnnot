@@ -1,16 +1,10 @@
 package eu.jgen.notes.annot.processor.tests.two;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import eu.jgen.notes.annot.desc.AnnotationStandaloneSetup;
-import eu.jgen.notes.annot.desc.annotation.Metadata;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -23,7 +17,11 @@ import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
-import org.eclipse.xtext.xbase.annotations.xAnnotations.impl.XAnnotationImpl;
+
+import com.google.inject.Injector;
+
+import eu.jgen.notes.annot.desc.AnnotationStandaloneSetup;
+import eu.jgen.notes.annot.desc.annotation.Metadata;
 
 public class MyTest {
 
@@ -54,7 +52,7 @@ public class MyTest {
 			
 			;
 			for (EObject eobject : model.eContents()) {
-				if(eobject instanceof XAnnotationImpl) {
+				if(eobject instanceof XAnnotation) {
 					XAnnotation xAnnotation = (XAnnotation) eobject;
 					System.out.println(xAnnotation.getAnnotationType().getQualifiedName());
 					 

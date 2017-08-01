@@ -35,6 +35,13 @@ import eu.jgen.notes.annot.processor.base.Processor;
 import eu.jgen.notes.annot.processor.base.ScanEnvironment;
 import eu.jgen.notes.annot.processor.base.SupportedAnnotationTypes;
 
+/**
+ * An abstract annotation processor designed to be a convenient
+ * superclass for most concrete annotation processors.  
+ * 
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public abstract class AbstractProcessor implements Processor { 
 	
 	protected ProcessingEnvironment processingEnv;

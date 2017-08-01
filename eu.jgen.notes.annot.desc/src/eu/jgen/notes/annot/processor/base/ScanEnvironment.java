@@ -29,6 +29,10 @@ import java.util.Set;
 
 import eu.jgen.notes.annot.processor.impl.AnnotationObject;
 
+/** *
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public interface ScanEnvironment {
 	
 	 void setScanResult( Set<AnnotationObject> foundObjects);

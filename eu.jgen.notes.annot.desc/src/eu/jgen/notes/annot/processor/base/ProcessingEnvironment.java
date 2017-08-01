@@ -24,6 +24,10 @@
 package eu.jgen.notes.annot.processor.base;
 
  
+/** *
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public interface ProcessingEnvironment {
 	
 	 /**

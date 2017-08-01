@@ -27,6 +27,13 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 import eu.jgen.notes.automation.wrapper.JGenObject;
 
+/**
+ * Object returned by the annotation worker after model scan is complete. Object allows to associate annotation 
+ * with the object concrete object in the model.
+ * 
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public class AnnotationObject {
 	
 	private JGenObject jGenObject;

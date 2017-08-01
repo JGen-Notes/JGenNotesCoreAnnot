@@ -23,6 +23,13 @@
  */
 package eu.jgen.notes.annot.processor.impl;
 
+/** *
+ * The kind of a diagnostic can be used to determine how the
+ * diagnostic should be presented to the user. 
+ *  
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public enum DiagnosticKind {
 	ERROR,
 	INFO,

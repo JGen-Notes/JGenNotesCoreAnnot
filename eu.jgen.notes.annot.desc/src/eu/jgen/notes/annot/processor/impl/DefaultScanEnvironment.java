@@ -28,6 +28,12 @@ import java.util.Set;
 
 import eu.jgen.notes.annot.processor.base.ScanEnvironment;
 
+/**
+ * This is default implementation of the <code>ProcessingEnvironment</code>.
+ * 
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public class DefaultScanEnvironment implements ScanEnvironment {
 
 	public Set<AnnotationObject> foundObjects;

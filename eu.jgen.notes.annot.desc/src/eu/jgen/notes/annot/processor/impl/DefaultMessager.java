@@ -30,6 +30,12 @@ import com.ca.gen.jmmi.schema.PrpTypeHelper;
 
 import eu.jgen.notes.annot.processor.base.Messager;
 
+/**
+ * This is default implementation of the <code>Messager</code>.
+ * 
+ * @author Marek Stankiewicz
+ * @since 1.0
+ */
 public class DefaultMessager implements Messager {
 
 	public DefaultMessager() {

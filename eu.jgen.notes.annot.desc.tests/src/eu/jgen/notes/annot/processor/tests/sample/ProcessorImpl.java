@@ -2,7 +2,6 @@ package eu.jgen.notes.annot.processor.tests.sample;
 
 import java.util.Set;
 
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 import eu.jgen.notes.annot.processor.base.ScanEnvironment;
@@ -10,7 +9,6 @@ import eu.jgen.notes.annot.processor.base.SupportedAnnotationTypes;
 import eu.jgen.notes.annot.processor.impl.AbstractProcessor;
 import eu.jgen.notes.annot.processor.impl.AnnotationObject;
 import eu.jgen.notes.annot.processor.impl.DefaultScanEnvironment;
-import eu.jgen.notes.automation.wrapper.JGenObject;
 
 @javax.annotation.processing.SupportedAnnotationTypes(value = { "" })
 @SupportedAnnotationTypes(value = { "eu.jgen.notes.annot.processor.tests.impl.Author",
