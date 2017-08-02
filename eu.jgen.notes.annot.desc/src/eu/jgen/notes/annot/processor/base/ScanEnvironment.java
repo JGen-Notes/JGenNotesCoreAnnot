@@ -55,7 +55,7 @@ public interface ScanEnvironment {
      * @throws IllegalArgumentException if the argument does not
      * represent an annotation type
      */
-    Set<? extends AnnotationObject> getElementsAnnotatedWith(Class<? extends Annotation> a);
+    Set<AnnotationObject> getElementsAnnotatedWith(Class<? extends Annotation> a);
 
 	Set<AnnotationObject> getScanResult();
 	

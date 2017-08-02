@@ -24,6 +24,7 @@
 package eu.jgen.notes.annot.processor.impl;
 
 import java.lang.annotation.Annotation;
+import java.util.HashSet;
 import java.util.Set;
 
 import eu.jgen.notes.annot.processor.base.ScanEnvironment;
@@ -35,6 +36,8 @@ import eu.jgen.notes.annot.processor.base.ScanEnvironment;
  * @since 1.0
  */
 public class DefaultScanEnvironment implements ScanEnvironment {
+	
+	private boolean errorRaised = false;
 
 	public Set<AnnotationObject> foundObjects;
 
@@ -44,12 +47,20 @@ public class DefaultScanEnvironment implements ScanEnvironment {
 
 	@Override
 	public boolean errorRaised() {
-		return false;
+		return errorRaised;
 	}
 
 	@Override
-	public Set<? extends AnnotationObject> getElementsAnnotatedWith(Class<? extends Annotation> a) {
-		return null;
+	public Set<AnnotationObject> getElementsAnnotatedWith(Class<? extends Annotation> annotationClass) {
+		System.out.println(annotationClass.getName());
+		Set<AnnotationObject> selectedObjects = new HashSet<AnnotationObject>();
+		for (AnnotationObject annotationObject : foundObjects) {
+			if(annotationObject.getxAnnotation().getAnnotationType().getIdentifier().equals(annotationClass.getName())) {
+				selectedObjects.add(annotationObject);
+			}
+			
+		}
+		return selectedObjects;
 	}
 
 	@Override

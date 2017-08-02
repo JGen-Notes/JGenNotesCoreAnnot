@@ -94,12 +94,11 @@ public class AnnotationWorker {
 
 	private void processObject(JGenObject jGenObject) {
 		ScanEnvironment roundEnv = new DefaultScanEnvironment();
-		String text = jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.DESC));
-		if (text.length() >= 5 && text.startsWith("#meta")) {
-			parseAndValidateDescription(roundEnv, jGenObject, text,
+		String description = jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.DESC));
+		if (description.length() >= 5 && description.startsWith("#meta")) {
+			parseAndValidateDescription(roundEnv, jGenObject, description,
 					Integer.toString(jGenObject.getId()) + "."
-							+ jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.NAME)));
-		  
+							+ jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.NAME)));		  
 			Set<XAnnotation> annotations = new HashSet<XAnnotation>();
 			for (AnnotationObject annotationObject : roundEnv.getScanResult()) {
 				annotations.add(annotationObject.getxAnnotation());				
@@ -121,8 +120,7 @@ public class AnnotationWorker {
 			List<Issue> list = validate(resource);
 			for (Issue issue : list) {
 				if (issue.getSeverity() == Severity.ERROR) {
-					System.out.println(issue);
-					System.out.println(desc);
+					 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, issue.getMessage(), jGenObject);
 					roundEnv.setScanResult(foundObjects);
 				}
 			}
@@ -136,6 +134,7 @@ public class AnnotationWorker {
 			}
 			roundEnv.setScanResult(foundObjects);
 		} catch (IOException e) {
+			 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, e.getMessage(), jGenObject);
 			throw new RuntimeException(e);
 		}
 	}
