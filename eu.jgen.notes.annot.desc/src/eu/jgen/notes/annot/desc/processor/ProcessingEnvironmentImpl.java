@@ -21,48 +21,82 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.impl;
+package eu.jgen.notes.annot.desc.processor;
 
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+import java.util.Map;
 
-import com.ca.gen.jmmi.schema.ObjTypeHelper;
-import com.ca.gen.jmmi.schema.PrpTypeCode;
-import com.ca.gen.jmmi.schema.PrpTypeHelper;
+import org.eclipse.xtext.resource.XtextResourceSet;
 
-import eu.jgen.notes.automation.wrapper.JGenObject;
+import com.ca.gen.jmmi.Ency;
+import com.ca.gen.jmmi.Model;
+import com.google.inject.Inject;
 
 /**
- * Object returned by the annotation worker after model scan is complete. Object
- * allows to associate annotation with the object concrete object in the model.
+ * This is default implementation of the <code>ProcessingEnvironment</code>.
  * 
  * @author Marek Stankiewicz
  * @since 1.0
  */
-public class AnnotationObject {
+public class ProcessingEnvironmentImpl implements ProcessingEnvironment {
 
-	private JGenObject jGenObject;
-	private XAnnotation xAnnotation;
+	private Filer filer;
+	
+	private Messager messager;
 
-	public AnnotationObject(JGenObject jGenObject, XAnnotation xAnnotation) {
-		super();
-		this.jGenObject = jGenObject;
-		this.xAnnotation = xAnnotation;
+	private XtextResourceSet resourceSet;
+
+	private Map<String, String> options;
+
+	private Ency ency;
+	
+	private Model model;
+
+	public ProcessingEnvironmentImpl() {
 	}
 
-	public JGenObject getjGenObject() {
-		return jGenObject;
+	public void init(Model model, Map<String, String> options, Messager messager, Filer filer) {
+		this.model = model;
+		this.ency = model.getEncy();
+		this.options = options;
+		this.messager = messager;
+		this.filer = filer;
 	}
 
-	public XAnnotation getxAnnotation() {
-		return xAnnotation;
+	public Ency getEncy() {
+		return ency;
 	}
 
-	public String toString() {
-		return "AnnotationObject:  id=" + jGenObject.getId() + ", mnemonic="
-				+ ObjTypeHelper.valueOf( (short) jGenObject.getObjTypeCode()) + ", name="
-				+ jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.NAME)) + ", annotation.type="
-				+ xAnnotation.getAnnotationType().getIdentifier() + "\ndesc:\n"
-				+ jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.DESC));
+	@Override
+	public Filer getFiler() {
+		return filer;
+	}
+
+	@Override
+	public Messager getMessager() {
+		return messager;
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	@Override
+	public Map<String, String> getOptions() {
+		return options;
+	}
+
+	public XtextResourceSet getResourceSet() {
+		return resourceSet;
+	}
+
+	@Override
+	public void setOptions(Map<String, String> options) {
+		this.options =options;		
+	}
+
+	@Override
+	public void setResourceSet(XtextResourceSet resourceSet) {
+		this.resourceSet = resourceSet;		
 	}
 
 }

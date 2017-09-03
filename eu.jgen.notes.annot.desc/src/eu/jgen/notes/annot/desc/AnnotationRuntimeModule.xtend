@@ -3,22 +3,33 @@
  */
 package eu.jgen.notes.annot.desc
 
- 
-
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class AnnotationRuntimeModule extends AbstractAnnotationRuntimeModule {
-	
-	
+
 	override bindDiagnostician() {
 		super.bindDiagnostician()
 	}
-	
-	def public Class<? > bindAnnotationWorker() {
-		return  eu.jgen.notes.annot.processor.impl.AnnotationWorker
+
+	def public Class<? extends eu.jgen.notes.annot.desc.processor.AnnotationWorker> bindAnnotationWorker() {
+		return eu.jgen.notes.annot.desc.processor.AnnotationWorker
 	}
-	
-	
-	
+
+	def public Class<? extends eu.jgen.notes.annot.desc.processor.ProcessingEnvironment> bindProcessingEnvironment() {
+		return eu.jgen.notes.annot.desc.processor.ProcessingEnvironmentImpl
+	}
+
+	def public Class<? extends eu.jgen.notes.annot.desc.processor.Filer> bindFiler() {
+		return eu.jgen.notes.annot.desc.processor.FilerImpl
+	}
+
+	def public Class<? extends eu.jgen.notes.annot.desc.processor.Messager> bindMessager() {
+		return eu.jgen.notes.annot.desc.processor.MessagerImpl
+	}
+
+	def public Class<? extends eu.jgen.notes.annot.desc.processor.ScanEnvironment> bindScanEnvironment() {
+		return eu.jgen.notes.annot.desc.processor.ScanEnvironmentImpl
+	}
+
 }

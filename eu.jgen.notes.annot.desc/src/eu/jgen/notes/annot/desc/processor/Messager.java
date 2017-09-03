@@ -1,8 +1,7 @@
-package eu.jgen.notes.annot.processor.base;
+package eu.jgen.notes.annot.desc.processor;
 
 
-import eu.jgen.notes.annot.processor.impl.DiagnosticKind;
-import eu.jgen.notes.automation.wrapper.JGenObject;
+import com.ca.gen.jmmi.MMObj;
 
 /** *
  * @author Marek Stankiewicz
@@ -24,9 +23,9 @@ public interface Messager {
      *
      * @param kind the kind of message
      * @param msg  the message, or an empty string if none
-     * @param e    the element to use as a position hint
+     * @param mmObj    the element to use as a position hint
      */
-   public   void printMessage(DiagnosticKind kind, CharSequence msg, JGenObject jGenObject);
+   public   void printMessage(DiagnosticKind kind, CharSequence msg, MMObj mmObj);
 
 
   }

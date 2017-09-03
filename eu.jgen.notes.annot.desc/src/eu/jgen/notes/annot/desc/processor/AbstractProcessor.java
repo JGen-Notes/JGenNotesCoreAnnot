@@ -21,7 +21,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.impl;
+package eu.jgen.notes.annot.desc.processor;
 
 import java.util.Collections;
 import java.util.Set;
@@ -30,11 +30,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 import com.google.common.collect.Sets;
 
-import eu.jgen.notes.annot.processor.base.ProcessingEnvironment;
-import eu.jgen.notes.annot.processor.base.Processor;
-import eu.jgen.notes.annot.processor.base.ScanEnvironment;
-import eu.jgen.notes.annot.processor.base.SupportedAnnotationTypes;
-
 /**
  * An abstract annotation processor designed to be a convenient
  * superclass for most concrete annotation processors.  
@@ -42,8 +37,12 @@ import eu.jgen.notes.annot.processor.base.SupportedAnnotationTypes;
  * @author Marek Stankiewicz
  * @since 1.0
  */
-public abstract class AbstractProcessor implements Processor { 
+public  abstract class  AbstractProcessor implements Processor { 
 	
+	public AbstractProcessor() {
+		super();
+	}
+
 	protected ProcessingEnvironment processingEnv;
 	private boolean initialized = false;
 
@@ -66,7 +65,7 @@ public abstract class AbstractProcessor implements Processor {
 	}
   
 	@Override
-	public boolean process(Set<XAnnotation> annotations, ScanEnvironment scanEnv) {
+	public boolean process(Set<XAnnotation> annotations, ScanEnvironment scanEnvironment) {
 		return false;
 	}
 

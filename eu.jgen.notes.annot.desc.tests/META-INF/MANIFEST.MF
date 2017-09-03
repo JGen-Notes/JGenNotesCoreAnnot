@@ -13,9 +13,12 @@ Require-Bundle: eu.jgen.notes.annot.desc,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  com.ca.gen.jmmi;bundle-version="8.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: eu.jgen.notes.annot.desc.tests;x-internal=true,
+Export-Package: eu.jgen.notes.annot.desc.processor.tests,
+ eu.jgen.notes.annot.desc.tests;x-internal=true,
+ eu.jgen.notes.annot.processor.tests.sample,
  eu.jgen.notes.annot.processor.tests.two;x-internal=true
 Import-Package: eu.jgen.notes.automation.wrapper,
+ org.eclipse.xtext.junit4,
  org.hamcrest.core,
  org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0",

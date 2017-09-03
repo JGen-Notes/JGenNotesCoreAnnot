@@ -21,37 +21,53 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.impl;
+package eu.jgen.notes.annot.desc.processor;
 
-import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
-import eu.jgen.notes.annot.processor.base.Messager;
-import eu.jgen.notes.annot.processor.base.ProcessingEnvironment;
+import com.ca.gen.jmmi.MMObj;
+import com.ca.gen.jmmi.Model;
+import com.ca.gen.jmmi.ids.ObjId;
+import com.ca.gen.jmmi.schema.PrpTypeCode;
 
 /**
- * This is default implementation of the <code>ProcessingEnvironment</code>.
+ * Object returned by the annotation worker after model scan is complete. Object
+ * allows to associate annotation with the object concrete object in the model.
  * 
  * @author Marek Stankiewicz
  * @since 1.0
  */
-public class DefaultProcessingEnvironment implements ProcessingEnvironment  {
+public class AnnotationObject {
+
+	private MMObj mmObj;
+	private XAnnotation annotation;
+
+	public AnnotationObject(MMObj mmObj, XAnnotation annotation) {
+		super();
+		this.mmObj = mmObj;
+		this.annotation = annotation;
+	}
 	
- private XtextResourceSet resourceSet;
-
-	public XtextResourceSet getResourceSet() {
-	return resourceSet;
-}
-
-	@Override
-	public Messager getMessager() {		 
-		return new DefaultMessager();
+	public AnnotationObject(Model model, ObjId objId, XAnnotation annotation) {
+		super();
+		this.mmObj = MMObj.getInstance(model, objId);
+		this.annotation = annotation;
 	}
 
-	public DefaultProcessingEnvironment() {
+	public MMObj getGenObject() {
+		return mmObj;
 	}
 
-	public DefaultProcessingEnvironment(XtextResourceSet resourceSet ) {
-		this.resourceSet = resourceSet;
+	public XAnnotation getAnnotation() {
+		return annotation;
+	}
+
+	public String toString() {
+		return "AnnotationObject:  id=" + mmObj.getId() + ", mnemonic="
+				+ mmObj.getObjTypeCode() + ", name="
+				+ mmObj.getTextProperty(PrpTypeCode.NAME) + ", annotation.type="
+				+ annotation.getAnnotationType().getIdentifier() + "\ndesc:\n"
+				+mmObj.getTextProperty(PrpTypeCode.DESC);	 
 	}
 
 }

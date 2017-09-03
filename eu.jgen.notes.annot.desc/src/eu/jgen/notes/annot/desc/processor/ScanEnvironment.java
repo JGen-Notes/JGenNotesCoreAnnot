@@ -21,19 +21,26 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.base;
+package eu.jgen.notes.annot.desc.processor;
 
  
 import java.lang.annotation.Annotation;
+import java.util.List;
 import java.util.Set;
 
-import eu.jgen.notes.annot.processor.impl.AnnotationObject;
+import org.eclipse.xtext.resource.XtextResourceSet;
+
+import com.ca.gen.jmmi.MMObj;
+
+ 
 
 /** *
  * @author Marek Stankiewicz
  * @since 1.0
  */
 public interface ScanEnvironment {
+	
+	void init( XtextResourceSet resourceSet, ProcessingEnvironment processingEnv, List<MMObj> list);  
 	
 	 void setScanResult( Set<AnnotationObject> foundObjects);
 

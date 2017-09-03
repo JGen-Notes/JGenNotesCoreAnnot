@@ -21,10 +21,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.impl;
+package eu.jgen.notes.annot.desc.processor;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -42,112 +43,105 @@ import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
+import com.ca.gen.jmmi.MMObj;
 import com.ca.gen.jmmi.schema.PrpTypeCode;
-import com.ca.gen.jmmi.schema.PrpTypeHelper;
-import com.google.inject.Inject;
 
 import eu.jgen.notes.annot.desc.annotation.Metadata;
-import eu.jgen.notes.annot.processor.base.Processor;
-import eu.jgen.notes.annot.processor.base.ScanEnvironment;
-import eu.jgen.notes.automation.wrapper.JGenObject;
+import eu.jgen.notes.annot.desc.processor.ScanEnvironment;
 
 /**
- * This is tool allowing to retrieve the CA Gen Model (local) for 
- * a number of objects and scan them for meta-data. Worker  
- * is parsing meta-data looking for the supported annotation types.
- * Annotation worker executes <code>process</code> method for each
- * object which matches search criteria.
+ * This is default implementation of the <code>ProcessingEnvironment</code>.
  * 
  * @author Marek Stankiewicz
  * @since 1.0
  */
-public class AnnotationWorker {
-
-	private JGenObject[] sources;
-	private Processor processor;
-
-	@Inject
+public class ScanEnvironmentImpl implements ScanEnvironment {
+	
+	private boolean errorRaised = false;
+	
 	private XtextResourceSet resourceSet;
+	
+	private ProcessingEnvironment processingEnv;
 
-	private DefaultProcessingEnvironment processingEnv;
+	public Set<AnnotationObject> foundObjects;
 
-	public AnnotationWorker() {
+	public ScanEnvironmentImpl() {
+		super();
 	}
 
-	public AnnotationWorker initProcessor(Processor processor) {
-		this.processor = processor;
-		this.processingEnv = new DefaultProcessingEnvironment(resourceSet);
-		return this;
+	@Override
+	public boolean errorRaised() {
+		return errorRaised;
 	}
 
-	public AnnotationWorker setSources(JGenObject[] sources) {
-		this.sources = sources;
-		processor.init(processingEnv);
-		return this;
-	}
-
-	public void activate() {
-		for (JGenObject jGenObject : sources) {
-			processObject(jGenObject);
-		}
-	}
-
-	private void processObject(JGenObject jGenObject) {
-		ScanEnvironment roundEnv = new DefaultScanEnvironment();
-		String description = jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.DESC));
-		if (description.length() >= 5 && description.startsWith("#meta")) {
-			parseAndValidateDescription(roundEnv, jGenObject, description,
-					Integer.toString(jGenObject.getId()) + "."
-							+ jGenObject.findTextProperty(PrpTypeHelper.getCode(PrpTypeCode.NAME)));		  
-			Set<XAnnotation> annotations = new HashSet<XAnnotation>();
-			for (AnnotationObject annotationObject : roundEnv.getScanResult()) {
-				annotations.add(annotationObject.getxAnnotation());				
+	@Override
+	public Set<AnnotationObject> getElementsAnnotatedWith(Class<? extends Annotation> annotationClass) {
+		Set<AnnotationObject> selectedObjects = new HashSet<AnnotationObject>();
+		for (AnnotationObject annotationObject : foundObjects) {
+			if(annotationObject.getAnnotation().getAnnotationType().getIdentifier().equals(annotationClass.getName())) {
+				selectedObjects.add(annotationObject);
 			}
-			processor.process(annotations, roundEnv);
-		} 
+			
+		}
+		return selectedObjects;
 	}
 
-	private void parseAndValidateDescription(ScanEnvironment roundEnv, JGenObject jGenObject, String desc, String name) {
-		Set<AnnotationObject> foundObjects = new HashSet<AnnotationObject>();
+	@Override
+	public void setScanResult(Set<AnnotationObject> foundObjects) {
+		this.foundObjects = foundObjects;
+	}
+
+	@Override
+	public Set<AnnotationObject> getScanResult() {
+		return foundObjects;
+	}
+
+	@Override
+	public void init( XtextResourceSet resourceSet, ProcessingEnvironment processingEnv,  List<MMObj> list) {
+		this.resourceSet = resourceSet;
+		this.processingEnv = processingEnv;
+		foundObjects = new HashSet<AnnotationObject>();
+		 for (MMObj mmObj : list) {
+				String name = Long.toString(mmObj.getId().getValue()) + "."
+						+ mmObj.getTextProperty(PrpTypeCode.NAME);
+				String description = mmObj.getTextProperty(PrpTypeCode.DESC);
+				parseAndValidateDescription(mmObj, name, description);
+		}
+		
+	}
+	
+	private void parseAndValidateDescription(MMObj mmObj, String name, String description) {	
 		URI uri = URI.createURI(name + ".desc");
 		Resource resource = resourceSet.createResource(uri);
 		try {
-			resource.load(new ByteArrayInputStream(desc.getBytes("UTF-8")), new HashMap<>());
+			resource.load(new ByteArrayInputStream(description.getBytes("UTF-8")), new HashMap<>());
 			Metadata metadata = (Metadata) resource.getContents().get(0);
 			if(metadata == null) {
-				roundEnv.setScanResult(foundObjects);
+				return;
 			}
 			List<Issue> list = validate(resource);
 			for (Issue issue : list) {
 				if (issue.getSeverity() == Severity.ERROR) {
-					 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, issue.getMessage(), jGenObject);
-					roundEnv.setScanResult(foundObjects);
+					errorRaised = true;
+//					 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, issue.getMessage(), jGenObject);
+//					roundEnv.setScanResult(foundObjects);
 				}
 			}
 			for (EObject eobject : metadata.eContents()) {
 				if (eobject instanceof XAnnotation) {
-					XAnnotation xAnnotation = (XAnnotation) eobject;
-					if(matchTypes(xAnnotation.getAnnotationType().getIdentifier())) {
-						foundObjects.add(new AnnotationObject(jGenObject, xAnnotation));
-					}				
+					XAnnotation annotation = (XAnnotation) eobject;
+					foundObjects.add(new AnnotationObject(mmObj, annotation));				
 				}
 			}
-			roundEnv.setScanResult(foundObjects);
+	//		roundEnv.setScanResult(foundObjects);
 		} catch (IOException e) {
-			 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, e.getMessage(), jGenObject);
+			errorRaised = true;
+//			 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, e.getMessage(), jGenObject);
 			throw new RuntimeException(e);
 		}
+		
 	}
-
-	private boolean matchTypes(String name) {		 
-		for (String text : processor.getSupportedAnnotationTypes()) {
-			if(text.equals(name)) {
-				return true;
-			}
-		}		
-		return false;
-	}
-
+	
 	private List<Issue> validate(Resource resource) {
 		IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider().getResourceValidator();
 		return validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);

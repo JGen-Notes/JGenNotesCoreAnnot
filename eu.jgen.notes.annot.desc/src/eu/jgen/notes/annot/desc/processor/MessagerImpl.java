@@ -21,56 +21,29 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.impl;
+package eu.jgen.notes.annot.desc.processor;
 
-import java.lang.annotation.Annotation;
-import java.util.HashSet;
-import java.util.Set;
-
-import eu.jgen.notes.annot.processor.base.ScanEnvironment;
+import com.ca.gen.jmmi.MMObj;
+import com.ca.gen.jmmi.schema.PrpTypeCode;
 
 /**
- * This is default implementation of the <code>ProcessingEnvironment</code>.
+ * This is default implementation of the <code>Messager</code>.
  * 
  * @author Marek Stankiewicz
  * @since 1.0
  */
-public class DefaultScanEnvironment implements ScanEnvironment {
-	
-	private boolean errorRaised = false;
+public class MessagerImpl implements Messager {
 
-	public Set<AnnotationObject> foundObjects;
-
-	public DefaultScanEnvironment() {
-		super();
+	public MessagerImpl() {
 	}
 
-	@Override
-	public boolean errorRaised() {
-		return errorRaised;
+	public void printMessage(DiagnosticKind kind, CharSequence msg) {
+		System.out.println(kind + ": " + msg.toString());
 	}
 
-	@Override
-	public Set<AnnotationObject> getElementsAnnotatedWith(Class<? extends Annotation> annotationClass) {
-		System.out.println(annotationClass.getName());
-		Set<AnnotationObject> selectedObjects = new HashSet<AnnotationObject>();
-		for (AnnotationObject annotationObject : foundObjects) {
-			if(annotationObject.getxAnnotation().getAnnotationType().getIdentifier().equals(annotationClass.getName())) {
-				selectedObjects.add(annotationObject);
-			}
-			
-		}
-		return selectedObjects;
-	}
-
-	@Override
-	public void setScanResult(Set<AnnotationObject> foundObjects) {
-		this.foundObjects = foundObjects;
-	}
-
-	@Override
-	public Set<AnnotationObject> getScanResult() {
-		return foundObjects;
+	public void printMessage(DiagnosticKind kind, CharSequence msg, MMObj jGenObject) {
+		System.out.println(kind + ": " + msg.toString() + " (" + jGenObject.getId() + ","
+				+ jGenObject.getTextProperty(PrpTypeCode.NAME) + ")");
 	}
 
 }

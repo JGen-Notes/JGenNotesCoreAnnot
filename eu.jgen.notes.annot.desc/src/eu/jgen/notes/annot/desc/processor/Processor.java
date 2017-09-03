@@ -21,7 +21,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.base;
+package eu.jgen.notes.annot.desc.processor;
 
 import java.util.Set;
 

@@ -21,9 +21,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-package eu.jgen.notes.annot.processor.base;
+package eu.jgen.notes.annot.desc.processor;
 
- 
+import java.util.Map;
+
+import org.eclipse.xtext.resource.XtextResourceSet;
+
+import com.ca.gen.jmmi.Ency;
+import com.ca.gen.jmmi.Model;
+
 /** *
  * @author Marek Stankiewicz
  * @since 1.0
@@ -37,5 +43,21 @@ public interface ProcessingEnvironment {
      * @return the messager
      */
     public  Messager getMessager();
+    
+    public Filer getFiler();
+    
+    public Ency getEncy();
+    
+    public Model getModel();
+    
+   public  Map<String,String> getOptions();
+   
+   public  void setOptions(Map<String,String> options);
+   
+   public  void setResourceSet(XtextResourceSet resourceSet);
+     
+   public  XtextResourceSet getResourceSet();
+
+public void init(Model model, Map<String, String> options, Messager messager, Filer filer);
 
 }
