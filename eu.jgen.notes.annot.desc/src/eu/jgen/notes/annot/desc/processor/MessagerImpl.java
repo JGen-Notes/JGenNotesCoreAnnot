@@ -23,6 +23,9 @@
  */
 package eu.jgen.notes.annot.desc.processor;
 
+import java.util.List;
+import java.util.Vector;
+
 import com.ca.gen.jmmi.MMObj;
 import com.ca.gen.jmmi.schema.PrpTypeCode;
 
@@ -33,17 +36,33 @@ import com.ca.gen.jmmi.schema.PrpTypeCode;
  * @since 1.0
  */
 public class MessagerImpl implements Messager {
+	
+	private List<String> messages = null;
 
 	public MessagerImpl() {
 	}
 
 	public void printMessage(DiagnosticKind kind, CharSequence msg) {
-		System.out.println(kind + ": " + msg.toString());
+		if(messages == null) {
+			messages = new Vector<String>();
+		}
+		String text = kind + ": " + msg.toString();
+		messages.add(text);
+		System.out.println(text);
 	}
 
 	public void printMessage(DiagnosticKind kind, CharSequence msg, MMObj jGenObject) {
-		System.out.println(kind + ": " + msg.toString() + " (" + jGenObject.getId() + ","
-				+ jGenObject.getTextProperty(PrpTypeCode.NAME) + ")");
+		if(messages == null) {
+			messages = new Vector<String>();
+		}
+		String text = kind + ": " + msg.toString() + " (" + jGenObject.getId() + ","
+				+ jGenObject.getTextProperty(PrpTypeCode.NAME) + ")";
+		messages.add(text);
+		System.out.println(text);
+	}
+
+	public List<String> getMessages() {
+		return messages;
 	}
 
 }

@@ -29,7 +29,6 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.ca.gen.jmmi.Ency;
 import com.ca.gen.jmmi.Model;
-import com.google.inject.Inject;
 
 /**
  * This is default implementation of the <code>ProcessingEnvironment</code>.
@@ -52,14 +51,6 @@ public class ProcessingEnvironmentImpl implements ProcessingEnvironment {
 	private Model model;
 
 	public ProcessingEnvironmentImpl() {
-	}
-
-	public void init(Model model, Map<String, String> options, Messager messager, Filer filer) {
-		this.model = model;
-		this.ency = model.getEncy();
-		this.options = options;
-		this.messager = messager;
-		this.filer = filer;
 	}
 
 	public Ency getEncy() {
@@ -87,6 +78,14 @@ public class ProcessingEnvironmentImpl implements ProcessingEnvironment {
 
 	public XtextResourceSet getResourceSet() {
 		return resourceSet;
+	}
+
+	public void init(Model model, Map<String, String> options, Messager messager, Filer filer) {
+		this.model = model;
+		this.ency = model.getEncy();
+		this.options = options;
+		this.messager = messager;
+		this.filer = filer;
 	}
 
 	@Override

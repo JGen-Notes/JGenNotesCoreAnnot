@@ -23,25 +23,13 @@
  */
 package eu.jgen.notes.annot.desc.processor;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.diagnostics.Severity;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.eclipse.xtext.util.CancelIndicator;
-import org.eclipse.xtext.validation.CheckMode;
-import org.eclipse.xtext.validation.IResourceValidator;
-import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 import com.ca.gen.jmmi.MMObj;
@@ -50,8 +38,6 @@ import com.ca.gen.jmmi.ids.ObjId;
 import com.ca.gen.jmmi.schema.PrpTypeCode;
 import com.ca.gen.jmmi.schema.PrpTypeHelper;
 import com.google.inject.Inject;
-
-import eu.jgen.notes.annot.desc.annotation.Metadata;
 
 /**
  * This class allows to retrieve annotations by scanning provided list of objects  

@@ -56,11 +56,11 @@ import eu.jgen.notes.annot.desc.processor.ScanEnvironment;
  * @since 1.0
  */
 public class ScanEnvironmentImpl implements ScanEnvironment {
-	
+
 	private boolean errorRaised = false;
-	
+
 	private XtextResourceSet resourceSet;
-	
+
 	private ProcessingEnvironment processingEnv;
 
 	public Set<AnnotationObject> foundObjects;
@@ -78,10 +78,10 @@ public class ScanEnvironmentImpl implements ScanEnvironment {
 	public Set<AnnotationObject> getElementsAnnotatedWith(Class<? extends Annotation> annotationClass) {
 		Set<AnnotationObject> selectedObjects = new HashSet<AnnotationObject>();
 		for (AnnotationObject annotationObject : foundObjects) {
-			if(annotationObject.getAnnotation().getAnnotationType().getIdentifier().equals(annotationClass.getName())) {
+			if (annotationObject.getAnnotation().getAnnotationType().getIdentifier()
+					.equals(annotationClass.getName())) {
 				selectedObjects.add(annotationObject);
 			}
-			
 		}
 		return selectedObjects;
 	}
@@ -97,51 +97,48 @@ public class ScanEnvironmentImpl implements ScanEnvironment {
 	}
 
 	@Override
-	public void init( XtextResourceSet resourceSet, ProcessingEnvironment processingEnv,  List<MMObj> list) {
+	public void init(XtextResourceSet resourceSet, ProcessingEnvironment processingEnv, List<MMObj> list) {
 		this.resourceSet = resourceSet;
 		this.processingEnv = processingEnv;
 		foundObjects = new HashSet<AnnotationObject>();
-		 for (MMObj mmObj : list) {
-				String name = Long.toString(mmObj.getId().getValue()) + "."
-						+ mmObj.getTextProperty(PrpTypeCode.NAME);
-				String description = mmObj.getTextProperty(PrpTypeCode.DESC);
-				parseAndValidateDescription(mmObj, name, description);
+		for (MMObj mmObj : list) {
+			String name = Long.toString(mmObj.getId().getValue()) + "." + mmObj.getTextProperty(PrpTypeCode.NAME);
+			String description = mmObj.getTextProperty(PrpTypeCode.DESC);
+			parseAndValidateDescription(mmObj, name, description);
 		}
-		
 	}
-	
-	private void parseAndValidateDescription(MMObj mmObj, String name, String description) {	
+
+	private void parseAndValidateDescription(MMObj mmObj, String name, String description) {
 		URI uri = URI.createURI(name + ".desc");
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			resource.load(new ByteArrayInputStream(description.getBytes("UTF-8")), new HashMap<>());
 			Metadata metadata = (Metadata) resource.getContents().get(0);
-			if(metadata == null) {
+			if (metadata == null) {
 				return;
 			}
 			List<Issue> list = validate(resource);
 			for (Issue issue : list) {
 				if (issue.getSeverity() == Severity.ERROR) {
 					errorRaised = true;
-//					 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, issue.getMessage(), jGenObject);
-//					roundEnv.setScanResult(foundObjects);
+					processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, issue.getMessage(), mmObj);
 				}
 			}
 			for (EObject eobject : metadata.eContents()) {
 				if (eobject instanceof XAnnotation) {
 					XAnnotation annotation = (XAnnotation) eobject;
-					foundObjects.add(new AnnotationObject(mmObj, annotation));				
+					foundObjects.add(new AnnotationObject(mmObj, annotation));
 				}
 			}
-	//		roundEnv.setScanResult(foundObjects);
 		} catch (IOException e) {
 			errorRaised = true;
-//			 processingEnv.getMessager().printMessage(DiagnosticKind.ERROR, e.getMessage(), jGenObject);
+			processingEnv.getMessager().printMessage(DiagnosticKind.ERROR,
+			 e.getMessage(), mmObj);
 			throw new RuntimeException(e);
 		}
-		
+
 	}
-	
+
 	private List<Issue> validate(Resource resource) {
 		IResourceValidator validator = ((XtextResource) resource).getResourceServiceProvider().getResourceValidator();
 		return validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl);
